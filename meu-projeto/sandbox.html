@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Sandbox 🎧</title>
+
+    <link rel="icon" href="assets/img/favicon.ico">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <nav>
+        <a href="index.html">Início</a>
+        <a href="atividade-3.html">Atividade 3</a>
+        <a href="sandbox.html">Sandbox</a>
+    </nav>
+
+    <!-- CONTEÚDO -->
+    <div class="container">
+
+        <h1>Sandbox 🎧</h1>
+        <p>Player interativo estilo Spotify.</p>
+
+        <!-- PLAYER -->
+        <div class="card">
+            <h2>🎵 Tocando agora</h2>
+
+            <audio id="player" controls>
+                <source src="assets/audio/musica1.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+
+        <!-- PLAYLIST -->
+        <div class="card">
+            <h2>📀 Playlist</h2>
+            <ul>
+                <li onclick="tocar('assets/audio/musica1.mp3')">🎶 Música 1</li>
+                <li onclick="tocar('assets/audio/musica2.mp3')">🎶 Música 2</li>
+                <li onclick="tocar('assets/audio/musica3.mp3')">🎶 Música 3</li>
+            </ul>
+        </div>
+
+        <!-- VÍDEO -->
+        <div class="card">
+            <h2>🎥 Vídeo em destaque</h2>
+
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/QK8mJJJvaes"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <a href="index.html" class="button">⬅ Voltar</a>
+
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        function tocar(musica) {
+            const player = document.getElementById("player");
+            player.src = musica;
+            player.play();
+        }
+    </script>
+
+</body>
+</html>
