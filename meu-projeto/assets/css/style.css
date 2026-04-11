@@ -1,3 +1,6 @@
+/* =========================
+   🎨 PALETA
+========================= */
 :root {
     --primary: #3B9797;
     --dark1: #132440;
@@ -10,6 +13,7 @@
     --card2: rgba(22, 71, 106, 0.7);
 }
 
+/* 🌞 MODO CLARO */
 .light-mode {
     --bg: #FDB5CE;
     --text: #132440;
@@ -17,6 +21,9 @@
     --card2: rgba(255,255,255,0.9);
 }
 
+/* =========================
+   🌍 BODY
+========================= */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -26,12 +33,24 @@ body {
     animation: gradientMove 10s ease infinite;
 }
 
+/* ANIMAÇÃO FUNDO */
 @keyframes gradientMove {
     0% {background-position: 0%}
     50% {background-position: 100%}
     100% {background-position: 0%}
 }
 
+/* =========================
+   📌 HEADER
+========================= */
+header {
+    text-align: center;
+    margin-top: 80px;
+}
+
+/* =========================
+   📌 MENU
+========================= */
 nav {
     position: fixed;
     width: 100%;
@@ -39,45 +58,107 @@ nav {
     text-align: center;
     padding: 15px;
     top: 0;
+    z-index: 1000;
 }
 
 nav a {
     color: var(--text);
     margin: 0 10px;
     text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
 }
 
-.container {
+nav a:hover {
+    color: var(--accent);
+}
+
+/* =========================
+   📦 MAIN / CONTAINER
+========================= */
+main.container {
     margin-top: 120px;
-    max-width: 500px;
-    margin: auto;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+
     padding: 30px;
     background: var(--card);
     border-radius: 15px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.card {
+/* =========================
+   📚 SECTION
+========================= */
+section {
+    text-align: left;
+}
+
+/* =========================
+   🧩 CARD / ARTICLE / ASIDE
+========================= */
+.card,
+article,
+aside {
     background: var(--card2);
     padding: 20px;
-    margin-top: 20px;
     border-radius: 10px;
 }
 
+/* =========================
+   🧠 ASIDE
+========================= */
+aside ul {
+    list-style: none;
+    padding: 0;
+}
+
+aside li {
+    margin: 10px 0;
+}
+
+aside a {
+    color: var(--text);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+aside a:hover {
+    color: var(--accent);
+}
+
+/* =========================
+   🎵 PLAYER
+========================= */
 .player-controls {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 10px;
 }
 
 .player-controls button {
     background: var(--primary);
     border: none;
     color: white;
-    padding: 10px;
+    padding: 10px 14px;
     border-radius: 50%;
     cursor: pointer;
+    transition: 0.3s;
 }
 
+.player-controls button:hover {
+    background: var(--accent);
+    transform: scale(1.1);
+}
+
+/* =========================
+   📊 PROGRESSO
+========================= */
 .progress-container {
     height: 8px;
     background: rgba(255,255,255,0.2);
@@ -90,14 +171,22 @@ nav a {
     height: 100%;
     width: 0%;
     background: var(--accent);
+    border-radius: 10px;
 }
 
+/* =========================
+   ⏱️ TEMPO
+========================= */
 .tempo {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
+    margin-top: 5px;
 }
 
+/* =========================
+   💿 PLAYLIST
+========================= */
 #playlist li {
     display: flex;
     align-items: center;
@@ -105,14 +194,26 @@ nav a {
     padding: 10px;
     margin-top: 5px;
     cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+#playlist li:hover {
+    background: rgba(255,255,255,0.1);
 }
 
 #playlist li.active {
     border-left: 5px solid var(--accent);
+    background: rgba(255,255,255,0.15);
 }
 
+/* =========================
+   🎥 VÍDEO CENTRALIZADO
+========================= */
 .video-container {
     position: relative;
+    width: 100%;
+    margin: 15px auto;
     padding-bottom: 56.25%;
 }
 
@@ -120,11 +221,65 @@ nav a {
     position: absolute;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
 }
 
+/* =========================
+   🎬 VIDEO CARD
+========================= */
+.video-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================
+   🔘 BOTÕES
+========================= */
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background: var(--accent);
+    color: black;
+    transform: scale(1.05);
+}
+
+/* =========================
+   🌙 BOTÃO TEMA
+========================= */
 .theme-toggle {
     position: fixed;
     right: 20px;
     top: 10px;
     z-index: 9999;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.theme-toggle:hover {
+    background: var(--accent);
+    color: black;
+}
+
+/* =========================
+   🦶 FOOTER
+========================= */
+footer {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 14px;
+    opacity: 0.7;
 }
