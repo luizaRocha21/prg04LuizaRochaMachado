@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel Admin 💼</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()">🌙/☀️</button>
+
+<nav>
+    <a href="index.html">Início</a>
+    <a href="login.html">Sair</a>
+</nav>
+
+<main class="container">
+
+    <h1>Painel Administrativo 💼</h1>
+
+    <table class="tabela" id="tabelaUsuarios">
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>1</td>
+                <td>Ana</td>
+                <td>ana@email.com</td>
+                <td>
+                    <button class="edit" onclick="editar(this)">Editar</button>
+                    <button class="delete" onclick="excluir(this)">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Bruno</td>
+                <td>bruno@email.com</td>
+                <td>
+                    <button class="edit" onclick="editar(this)">Editar</button>
+                    <button class="delete" onclick="excluir(this)">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>Carla</td>
+                <td>carla@email.com</td>
+                <td>
+                    <button class="edit" onclick="editar(this)">Editar</button>
+                    <button class="delete" onclick="excluir(this)">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>Daniel</td>
+                <td>daniel@email.com</td>
+                <td>
+                    <button class="edit" onclick="editar(this)">Editar</button>
+                    <button class="delete" onclick="excluir(this)">Excluir</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>5</td>
+                <td>Eduarda</td>
+                <td>edu@email.com</td>
+                <td>
+                    <button class="edit" onclick="editar(this)">Editar</button>
+                    <button class="delete" onclick="excluir(this)">Excluir</button>
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</main>
+
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+}
+
+/* 🗑️ EXCLUIR */
+function excluir(botao) {
+    const linha = botao.parentElement.parentElement;
+    
+    const confirmar = confirm("Deseja realmente excluir este usuário?");
+    
+    if (confirmar) {
+        linha.remove();
+    }
+}
+
+/* ✏️ EDITAR */
+function editar(botao) {
+    const linha = botao.parentElement.parentElement;
+
+    const nome = linha.children[1];
+    const email = linha.children[2];
+
+    const novoNome = prompt("Editar nome:", nome.innerText);
+    const novoEmail = prompt("Editar email:", email.innerText);
+
+    if (novoNome && novoEmail) {
+        if (!novoEmail.includes("@")) {
+            alert("Email inválido!");
+            return;
+        }
+
+        nome.innerText = novoNome;
+        email.innerText = novoEmail;
+    }
+}
+</script>
+
+</body>
+</html>

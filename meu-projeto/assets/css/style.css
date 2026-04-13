@@ -33,7 +33,7 @@ body {
     animation: gradientMove 10s ease infinite;
 }
 
-/* ANIMAÇÃO FUNDO */
+/* FUNDO ANIMADO */
 @keyframes gradientMove {
     0% {background-position: 0%}
     50% {background-position: 100%}
@@ -66,15 +66,16 @@ nav a {
     margin: 0 10px;
     text-decoration: none;
     font-weight: bold;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 nav a:hover {
     color: var(--accent);
+    transform: scale(1.05);
 }
 
 /* =========================
-   📦 MAIN / CONTAINER
+   📦 MAIN
 ========================= */
 main.container {
     margin-top: 120px;
@@ -107,10 +108,18 @@ aside {
     background: var(--card2);
     padding: 20px;
     border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.card:hover,
+article:hover,
+aside:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 /* =========================
-   🧠 ASIDE
+   📌 LINKS DO ASIDE
 ========================= */
 aside ul {
     list-style: none;
@@ -132,6 +141,78 @@ aside a:hover {
 }
 
 /* =========================
+   🔘 BOTÕES (GERAL)
+========================= */
+.button {
+    display: inline-block;
+    margin: 10px 5px 0 0;
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: var(--accent);
+    color: black;
+    transform: scale(1.08);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+/* =========================
+   ✏️ BOTÃO EDITAR
+========================= */
+.edit {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.edit:hover {
+    background: #2fc4c4;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #2fc4c4;
+}
+
+.edit:active {
+    transform: scale(0.9);
+}
+
+/* =========================
+   🗑️ BOTÃO EXCLUIR
+========================= */
+.delete {
+    background: #e85d75; 
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete:hover {
+    background: #ff6f91;
+    transform: scale(1.1);
+    box-shadow: 0 0 10px #ff6f91;
+}
+
+.delete:active {
+    transform: scale(0.9);
+}
+
+/* =========================
    🎵 PLAYER
 ========================= */
 .player-controls {
@@ -148,12 +229,17 @@ aside a:hover {
     padding: 10px 14px;
     border-radius: 50%;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 .player-controls button:hover {
     background: var(--accent);
-    transform: scale(1.1);
+    transform: scale(1.15);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+.player-controls button:active {
+    transform: scale(0.9);
 }
 
 /* =========================
@@ -195,11 +281,12 @@ aside a:hover {
     margin-top: 5px;
     cursor: pointer;
     border-radius: 8px;
-    transition: 0.3s;
+    transition: all 0.3s ease;
 }
 
 #playlist li:hover {
     background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
 }
 
 #playlist li.active {
@@ -208,7 +295,7 @@ aside a:hover {
 }
 
 /* =========================
-   🎥 VÍDEO CENTRALIZADO
+   🎥 VÍDEO
 ========================= */
 .video-container {
     position: relative;
@@ -225,35 +312,6 @@ aside a:hover {
 }
 
 /* =========================
-   🎬 VIDEO CARD
-========================= */
-.video-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* =========================
-   🔘 BOTÕES
-========================= */
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background: var(--primary);
-    color: white;
-    border-radius: 25px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.button:hover {
-    background: var(--accent);
-    color: black;
-    transform: scale(1.05);
-}
-
-/* =========================
    🌙 BOTÃO TEMA
 ========================= */
 .theme-toggle {
@@ -267,11 +325,13 @@ aside a:hover {
     padding: 8px 12px;
     border-radius: 20px;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .theme-toggle:hover {
     background: var(--accent);
     color: black;
+    box-shadow: 0 0 10px var(--accent);
 }
 
 /* =========================

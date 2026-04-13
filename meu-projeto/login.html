@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login 🔐</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+<button class="theme-toggle" onclick="toggleTheme()">🌙/☀️</button>
+
+<nav>
+    <a href="index.html">Início</a>
+</nav>
+
+<main class="container">
+
+    <h1>Login 🔐</h1>
+
+    <form onsubmit="return validarLogin()">
+
+        <input type="text" id="email" placeholder="Email ou usuário">
+        <br><br>
+
+        <input type="password" id="senha" placeholder="Senha">
+        <br><br>
+
+        <button type="submit" class="button">Entrar</button>
+
+        <p id="erro" style="color: red;"></p>
+
+    </form>
+
+</main>
+
+<script>
+function validarLogin() {
+    const email = document.getElementById("email").value;
+    const senha = document.getElementById("senha").value;
+    const erro = document.getElementById("erro");
+
+    if (email === "" || senha === "") {
+        erro.innerText = "Preencha todos os campos!";
+        return false;
+    }
+
+    if (!email.includes("@")) {
+        erro.innerText = "Email inválido!";
+        return false;
+    }
+
+    // SIMULA LOGIN
+    window.location.href = "admin.html";
+    return false;
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+}
+</script>
+
+</body>
+</html>
