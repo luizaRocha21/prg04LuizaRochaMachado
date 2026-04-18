@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login 🔐</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
@@ -9,10 +10,14 @@
 
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()">🌙/☀️</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
 <nav>
-    <a href="index.html">Início</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="menu">
+        <a href="index.html">Início</a>
+    </div>
 </nav>
 
 <main class="container">
@@ -21,7 +26,7 @@
 
     <form onsubmit="return validarLogin()">
 
-        <input type="text" id="email" placeholder="Email ou usuário">
+        <input type="text" id="email" placeholder="Email">
         <br><br>
 
         <input type="password" id="senha" placeholder="Senha">
@@ -29,13 +34,22 @@
 
         <button type="submit" class="button">Entrar</button>
 
-        <p id="erro" style="color: red;"></p>
+        <p id="erro" style="color:red;"></p>
 
     </form>
 
 </main>
 
 <script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+    localStorage.setItem("tema", document.body.classList.contains("light-mode") ? "claro" : "escuro");
+}
+
 function validarLogin() {
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
@@ -51,13 +65,14 @@ function validarLogin() {
         return false;
     }
 
-    // SIMULA LOGIN
     window.location.href = "admin.html";
     return false;
 }
 
-function toggleTheme() {
-    document.body.classList.toggle("light-mode");
+window.onload = () => {
+    if (localStorage.getItem("tema") === "claro") {
+        document.body.classList.add("light-mode");
+    }
 }
 </script>
 

@@ -13,7 +13,7 @@
     --card2: rgba(22, 71, 106, 0.7);
 }
 
-/* 🌞 MODO CLARO */
+/* 🌞 LIGHT MODE */
 .light-mode {
     --bg: #FDB5CE;
     --text: #132440;
@@ -22,7 +22,7 @@
 }
 
 /* =========================
-   🌍 BODY
+   🌍 BASE
 ========================= */
 body {
     margin: 0;
@@ -33,7 +33,6 @@ body {
     animation: gradientMove 10s ease infinite;
 }
 
-/* FUNDO ANIMADO */
 @keyframes gradientMove {
     0% {background-position: 0%}
     50% {background-position: 100%}
@@ -41,49 +40,59 @@ body {
 }
 
 /* =========================
-   📌 HEADER
-========================= */
-header {
-    text-align: center;
-    margin-top: 80px;
-}
-
-/* =========================
-   📌 MENU
+   🍔 NAVBAR
 ========================= */
 nav {
     position: fixed;
     width: 100%;
-    background: rgba(0,0,0,0.3);
-    text-align: center;
-    padding: 15px;
     top: 0;
+    background: rgba(0,0,0,0.4);
+    padding: 10px;
     z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-nav a {
+.menu-toggle {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+}
+
+.nav-links a {
+    padding: 10px;
+    display: block;
     color: var(--text);
-    margin: 0 10px;
     text-decoration: none;
-    font-weight: bold;
-    transition: all 0.3s ease;
+    transition: 0.3s;
 }
 
-nav a:hover {
+.nav-links a:hover {
     color: var(--accent);
-    transform: scale(1.05);
+}
+
+.nav-links.active {
+    display: flex;
 }
 
 /* =========================
-   📦 MAIN
+   📦 CONTAINER
 ========================= */
 main.container {
-    margin-top: 120px;
-    max-width: 600px;
+    margin-top: 90px;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 
-    padding: 30px;
+    padding: 20px;
     background: var(--card);
     border-radius: 15px;
 
@@ -93,82 +102,42 @@ main.container {
 }
 
 /* =========================
-   📚 SECTION
+   🧩 CARDS
 ========================= */
-section {
-    text-align: left;
-}
-
-/* =========================
-   🧩 CARD / ARTICLE / ASIDE
-========================= */
-.card,
-article,
-aside {
+.card, article, aside {
     background: var(--card2);
     padding: 20px;
     border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-.card:hover,
-article:hover,
-aside:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-}
-
-/* =========================
-   📌 LINKS DO ASIDE
-========================= */
-aside ul {
-    list-style: none;
-    padding: 0;
-}
-
-aside li {
-    margin: 10px 0;
-}
-
-aside a {
-    color: var(--text);
-    text-decoration: none;
     transition: 0.3s;
 }
 
-aside a:hover {
-    color: var(--accent);
+.card:hover {
+    transform: translateY(-5px);
 }
 
 /* =========================
-   🔘 BOTÕES (GERAL)
+   🔘 BOTÕES
 ========================= */
 .button {
-    display: inline-block;
-    margin: 10px 5px 0 0;
-    padding: 10px 20px;
+    display: block;
+    width: 100%;
+    padding: 12px;
     background: var(--primary);
     color: white;
     border-radius: 25px;
+    text-align: center;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     cursor: pointer;
 }
 
 .button:hover {
     background: var(--accent);
     color: black;
-    transform: scale(1.08);
-    box-shadow: 0 0 15px var(--accent);
+    transform: scale(1.05);
 }
 
-.button:active {
-    transform: scale(0.95);
-}
-
-/* =========================
-   ✏️ BOTÃO EDITAR
-========================= */
+/* EDITAR */
 .edit {
     background: var(--primary);
     color: white;
@@ -176,40 +145,24 @@ aside a:hover {
     padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .edit:hover {
     background: #2fc4c4;
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #2fc4c4;
 }
 
-.edit:active {
-    transform: scale(0.9);
-}
-
-/* =========================
-   🗑️ BOTÃO EXCLUIR
-========================= */
+/* EXCLUIR (ROSADO) */
 .delete {
-    background: #e85d75; 
+    background: #e85d75;
     color: white;
     border: none;
     padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .delete:hover {
     background: #ff6f91;
-    transform: scale(1.1);
-    box-shadow: 0 0 10px #ff6f91;
-}
-
-.delete:active {
-    transform: scale(0.9);
 }
 
 /* =========================
@@ -219,27 +172,20 @@ aside a:hover {
     display: flex;
     justify-content: center;
     gap: 10px;
-    margin-top: 10px;
 }
 
 .player-controls button {
     background: var(--primary);
     border: none;
-    color: white;
-    padding: 10px 14px;
+    padding: 10px;
     border-radius: 50%;
+    color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
 }
 
 .player-controls button:hover {
     background: var(--accent);
-    transform: scale(1.15);
-    box-shadow: 0 0 15px var(--accent);
-}
-
-.player-controls button:active {
-    transform: scale(0.9);
+    transform: scale(1.1);
 }
 
 /* =========================
@@ -257,7 +203,6 @@ aside a:hover {
     height: 100%;
     width: 0%;
     background: var(--accent);
-    border-radius: 10px;
 }
 
 /* =========================
@@ -267,31 +212,24 @@ aside a:hover {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
-    margin-top: 5px;
 }
 
 /* =========================
    💿 PLAYLIST
 ========================= */
 #playlist li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
     padding: 10px;
     margin-top: 5px;
     cursor: pointer;
     border-radius: 8px;
-    transition: all 0.3s ease;
 }
 
 #playlist li:hover {
     background: rgba(255,255,255,0.1);
-    transform: translateX(5px);
 }
 
 #playlist li.active {
     border-left: 5px solid var(--accent);
-    background: rgba(255,255,255,0.15);
 }
 
 /* =========================
@@ -299,8 +237,6 @@ aside a:hover {
 ========================= */
 .video-container {
     position: relative;
-    width: 100%;
-    margin: 15px auto;
     padding-bottom: 56.25%;
 }
 
@@ -319,27 +255,74 @@ aside a:hover {
     right: 20px;
     top: 10px;
     z-index: 9999;
+
     background: var(--primary);
     color: white;
     border: none;
     padding: 8px 12px;
     border-radius: 20px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
 .theme-toggle:hover {
     background: var(--accent);
     color: black;
-    box-shadow: 0 0 10px var(--accent);
 }
 
 /* =========================
-   🦶 FOOTER
+   📊 TABELA ADMIN
 ========================= */
-footer {
-    text-align: center;
-    margin: 40px 0;
-    font-size: 14px;
-    opacity: 0.7;
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela th, .tabela td {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    text-align: left;
+}
+
+/* =========================
+   📱 TABLET
+========================= */
+@media (min-width: 601px) {
+
+    .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    main.container {
+        width: 80%;
+    }
+
+    .button {
+        width: auto;
+        display: inline-block;
+    }
+}
+
+/* =========================
+   💻 DESKTOP
+========================= */
+@media (min-width: 1025px) {
+
+    main.container {
+        max-width: 900px;
+
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+    }
+
+    section {
+        grid-column: span 2;
+    }
 }

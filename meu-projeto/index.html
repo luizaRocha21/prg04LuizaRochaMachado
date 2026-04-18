@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Projeto Web 🚀</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Projeto 🚀</title>
 
     <link rel="icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -10,80 +11,48 @@
 
 <body>
 
-<!-- BOTÃO TEMA -->
-<button class="theme-toggle" onclick="toggleTheme()">🌙/☀️</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
-<!-- HEADER -->
-<header>
-    <h1>Meu Projeto Web 🚀</h1>
-</header>
-
-<!-- MENU -->
 <nav>
-    <a href="index.html">Início</a>
-    <a href="atividade-3.html">Atividade 3</a>
-    <a href="sandbox.html">Sandbox</a>
-    <a href="paleta.html">Paleta</a>
-    <a href="login.html">Login 🔐</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="menu">
+        <a href="index.html">Início</a>
+        <a href="atividade-3.html">Atividade 3</a>
+        <a href="sandbox.html">Sandbox</a>
+        <a href="paleta.html">Paleta</a>
+        <a href="login.html">Login</a>
+    </div>
 </nav>
 
-<!-- CONTEÚDO -->
+<header>
+    <h1>Bem-vindo ao projeto 🚀</h1>
+</header>
+
 <main class="container">
 
-    <!-- INTRO -->
-    <section>
-        <h2>Bem-vindo 👋</h2>
-
-        <p>
-            Este é o início do meu projeto web.
-        </p>
-    </section>
-
-    <!-- SOBRE -->
-    <section>
-        <article class="card">
-            <h2>📄 Sobre o projeto</h2>
-
-            <p>
-                Este projeto foi criado com o objetivo de aprender
-                HTML, CSS e JavaScript.
-            </p>
-
-            <p>
-                Criado em: 21/03/2026 - Luiza Rocha
-            </p>
-        </article>
-    </section>
-
-    <!-- AÇÕES -->
     <section class="card">
-        <h2>🚀 Acessos rápidos</h2>
+        <h2>Sobre</h2>
+        <p>Projeto web com HTML, CSS e JavaScript.</p>
+    </section>
+
+    <section class="card">
+        <h2>Acessos</h2>
 
         <a href="atividade-3.html" class="button">📄 Atividade 3</a>
         <a href="sandbox.html" class="button">🎧 Sandbox</a>
         <a href="paleta.html" class="button">🎨 Paleta</a>
         <a href="login.html" class="button">🔐 Login</a>
-    </section>
 
-    <!-- ASIDE -->
-    <aside class="card">
-        <h2>📌 Navegação</h2>
-        <ul>
-            <li><a href="atividade-3.html">Atividade 3</a></li>
-            <li><a href="sandbox.html">Sandbox</a></li>
-            <li><a href="paleta.html">Paleta</a></li>
-        </ul>
-    </aside>
+    </section>
 
 </main>
 
-<!-- RODAPÉ -->
-<footer>
-    <p>© 2026 - Luiza Rocha | Projeto Web</p>
-</footer>
-
-<!-- SCRIPT -->
 <script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
 function toggleTheme() {
     document.body.classList.toggle("light-mode");
     localStorage.setItem("tema", document.body.classList.contains("light-mode") ? "claro" : "escuro");

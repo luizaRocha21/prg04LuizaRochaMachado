@@ -2,8 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-
-    <title>Paleta de Cores 🎨</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paleta 🎨</title>
 
     <link rel="icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -11,76 +11,58 @@
 
 <body>
 
-    <!-- BOTÃO TEMA -->
-    <button class="theme-toggle" onclick="toggleTheme()">🌙/☀️</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
-    <!-- MENU -->
-    <nav>
+<nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="menu">
         <a href="index.html">Início</a>
         <a href="atividade-3.html">Atividade 3</a>
         <a href="sandbox.html">Sandbox</a>
         <a href="paleta.html">Paleta</a>
-    </nav>
-
-    <!-- CONTEÚDO -->
-    <div class="container">
-
-        <h1>🎨 Paleta de Cores</h1>
-
-        <p>
-            A paleta foi escolhida para transmitir tecnologia, modernidade e equilíbrio visual.
-        </p>
-
-        <!-- CORES -->
-        <div class="card">
-            <h2>Cores utilizadas</h2>
-
-            <div class="color-box" style="background:#3B9797;">#3B9797 (Principal)</div>
-            <div class="color-box" style="background:#16476A;">#16476A</div>
-            <div class="color-box" style="background:#132440;">#132440</div>
-            <div class="color-box" style="background:#FDB5CE; color:black;">#FDB5CE (Destaque)</div>
-        </div>
-
-        <!-- JUSTIFICATIVA -->
-        <div class="card">
-            <h2>Justificativa</h2>
-
-            <p><strong>#3B9797:</strong> Cor principal que representa tecnologia, equilíbrio e confiança. Muito utilizada em interfaces modernas.</p>
-
-            <p><strong>#16476A e #132440:</strong> Tons escuros que criam profundidade e contraste, deixando o design mais profissional.</p>
-
-            <p><strong>#FDB5CE:</strong> Cor de destaque que adiciona leveza e ajuda a chamar atenção sem poluir visualmente.</p>
-
-            <p><strong>Preto e branco:</strong> Garantem legibilidade e acessibilidade.</p>
-        </div>
-
-        <!-- TIPO -->
-        <div class="card">
-            <h2>Tipo de paleta</h2>
-
-            <p>
-                Essa paleta é classificada como <strong>análoga com contraste</strong>,
-                pois combina cores próximas (azul/verde) com um tom complementar suave (rosa).
-            </p>
-        </div>
-
-        <a href="index.html" class="button">⬅ Voltar</a>
-
+        <a href="login.html">Login</a>
     </div>
+</nav>
 
-    <!-- SCRIPT -->
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle("light-mode");
-            localStorage.setItem("tema", document.body.classList.contains("light-mode") ? "claro" : "escuro");
-        }
+<header>
+    <h1>🎨 Paleta de Cores</h1>
+</header>
 
-        window.onload = () => {
-            if (localStorage.getItem("tema") === "claro") {
-                document.body.classList.add("light-mode");
-            }
-        }
-    </script>
+<main class="container">
+
+    <section class="card">
+        <h2>Cores</h2>
+
+        <div class="color-box" style="background:#3B9797;">#3B9797</div>
+        <div class="color-box" style="background:#16476A;">#16476A</div>
+        <div class="color-box" style="background:#132440;">#132440</div>
+        <div class="color-box" style="background:#FDB5CE; color:black;">#FDB5CE</div>
+    </section>
+
+    <section class="card">
+        <h2>Justificativa</h2>
+        <p>A paleta combina tecnologia (azul/verde) com leveza (rosa).</p>
+    </section>
+
+</main>
+
+<script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+    localStorage.setItem("tema", document.body.classList.contains("light-mode") ? "claro" : "escuro");
+}
+
+window.onload = () => {
+    if (localStorage.getItem("tema") === "claro") {
+        document.body.classList.add("light-mode");
+    }
+}
+</script>
 
 </body>
 </html>

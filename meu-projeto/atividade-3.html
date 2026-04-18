@@ -2,43 +2,58 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atividade 3 🚀</title>
+
     <link rel="icon" href="assets/img/favicon.ico">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()">🌙/☀️</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
 <nav>
-    <a href="index.html">Início</a>
-    <a href="atividade-3.html">Atividade 3</a>
-    <a href="sandbox.html">Sandbox</a>
-    <a href="paleta.html">Paleta</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="menu">
+        <a href="index.html">Início</a>
+        <a href="atividade-3.html">Atividade 3</a>
+        <a href="sandbox.html">Sandbox</a>
+        <a href="paleta.html">Paleta</a>
+        <a href="login.html">Login</a>
+    </div>
 </nav>
 
-<div class="container">
-
+<header>
     <h1>Atividade 3 📄</h1>
+</header>
 
-    <div class="card">
-        <h2>Objetivos</h2>
-        <ul>
-            <li>Aprender HTML</li>
-            <li>Organizar projetos</li>
-            <li>Criar páginas web</li>
-        </ul>
-    </div>
+<main class="container">
 
-    <div class="card">
-        <h2>Imagem</h2>
-        <img src="https://picsum.photos/400" style="width:100%; border-radius:10px;">
-    </div>
+    <section>
+        <article class="card">
+            <h2>Objetivos</h2>
+            <ul>
+                <li>Aprender HTML</li>
+                <li>Organizar projetos</li>
+                <li>Criar páginas web</li>
+            </ul>
+        </article>
 
-</div>
+        <article class="card">
+            <h2>Imagem dinâmica</h2>
+            <img src="https://picsum.photos/400" style="width:100%; border-radius:10px;">
+        </article>
+    </section>
+
+</main>
 
 <script>
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
 function toggleTheme() {
     document.body.classList.toggle("light-mode");
     localStorage.setItem("tema", document.body.classList.contains("light-mode") ? "claro" : "escuro");

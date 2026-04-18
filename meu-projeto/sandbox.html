@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandbox 🎧</title>
 
     <link rel="icon" href="assets/img/favicon.ico">
@@ -10,21 +11,28 @@
 
 <body>
 
-<button class="theme-toggle" onclick="toggleTheme()">🌙/☀️</button>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
 <nav>
-    <a href="index.html">Início</a>
-    <a href="atividade-3.html">Atividade 3</a>
-    <a href="sandbox.html">Sandbox</a>
-    <a href="paleta.html">Paleta</a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="nav-links" id="menu">
+        <a href="index.html">Início</a>
+        <a href="atividade-3.html">Atividade 3</a>
+        <a href="sandbox.html">Sandbox</a>
+        <a href="paleta.html">Paleta</a>
+        <a href="login.html">Login</a>
+    </div>
 </nav>
 
-<div class="container">
-
+<header>
     <h1>Sandbox 🎧</h1>
+</header>
+
+<main class="container">
 
     <!-- PLAYER -->
-    <div class="card">
+    <section class="card">
         <h2 id="agora">🎵 Tocando agora: Música 1</h2>
 
         <audio id="player"></audio>
@@ -43,38 +51,27 @@
             <span id="tempoAtual">0:00</span>
             <span id="duracao">0:00</span>
         </div>
-    </div>
+    </section>
 
     <!-- PLAYLIST -->
-    <div class="card">
+    <section class="card">
         <h2>📀 Playlist</h2>
-
         <ul id="playlist">
-            <li onclick="tocar(0)" class="active">
-                <img src="https://picsum.photos/50?1">
-                🎶 Música 1
-            </li>
-            <li onclick="tocar(1)">
-                <img src="https://picsum.photos/50?2">
-                🎶 Música 2
-            </li>
-            <li onclick="tocar(2)">
-                <img src="https://picsum.photos/50?3">
-                🎶 Música 3
-            </li>
+            <li onclick="tocar(0)" class="active">🎶 Música 1</li>
+            <li onclick="tocar(1)">🎶 Música 2</li>
+            <li onclick="tocar(2)">🎶 Música 3</li>
         </ul>
-    </div>
+    </section>
 
     <!-- VÍDEO -->
-    <div class="card video-card">
+    <section class="card">
         <h2>🎥 Vídeo</h2>
-
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/QK8mJJJvaes" allowfullscreen></iframe>
         </div>
-    </div>
+    </section>
 
-</div>
+</main>
 
 <script>
 const musicas = [
@@ -90,14 +87,6 @@ let atual = 0;
 const player = document.getElementById("player");
 const playBtn = document.getElementById("playBtn");
 const agora = document.getElementById("agora");
-
-window.onload = () => {
-    player.src = musicas[0];
-
-    if (localStorage.getItem("tema") === "claro") {
-        document.body.classList.add("light-mode");
-    }
-};
 
 function playPause() {
     if (player.paused) {
@@ -150,11 +139,8 @@ function mudarTempo(e) {
 }
 
 function atualizarTempo() {
-    const atualSpan = document.getElementById("tempoAtual");
-    const duracaoSpan = document.getElementById("duracao");
-
-    atualSpan.textContent = formatar(player.currentTime);
-    duracaoSpan.textContent = formatar(player.duration);
+    document.getElementById("tempoAtual").textContent = formatar(player.currentTime);
+    document.getElementById("duracao").textContent = formatar(player.duration);
 }
 
 function formatar(seg) {
@@ -166,9 +152,23 @@ function formatar(seg) {
 
 player.addEventListener("ended", proxima);
 
+/* MENU */
+function toggleMenu() {
+    document.getElementById("menu").classList.toggle("active");
+}
+
+/* TEMA */
 function toggleTheme() {
     document.body.classList.toggle("light-mode");
     localStorage.setItem("tema", document.body.classList.contains("light-mode") ? "claro" : "escuro");
+}
+
+window.onload = () => {
+    player.src = musicas[0];
+
+    if (localStorage.getItem("tema") === "claro") {
+        document.body.classList.add("light-mode");
+    }
 }
 </script>
 
