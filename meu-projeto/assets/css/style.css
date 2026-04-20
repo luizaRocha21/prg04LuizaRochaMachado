@@ -17,8 +17,8 @@
 .light-mode {
     --bg: #FDB5CE;
     --text: #132440;
-    --card: rgba(255,255,255,0.7);
-    --card2: rgba(255,255,255,0.9);
+    --card: rgba(255,255,255,0.8);
+    --card2: rgba(255,255,255,0.95);
 }
 
 /* =========================
@@ -40,75 +40,46 @@ body {
 }
 
 /* =========================
-   🍔 NAVBAR
+   🍔 NAVBAR (Bootstrap)
 ========================= */
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    background: rgba(0,0,0,0.4);
-    padding: 10px;
-    z-index: 1000;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(0,0,0,0.6) !important;
 }
 
-.menu-toggle {
-    font-size: 24px;
-    cursor: pointer;
+.light-mode .navbar {
+    background: rgba(255,255,255,0.8) !important;
 }
 
-.nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    text-align: center;
+.navbar .nav-link {
+    color: var(--text) !important;
 }
 
-.nav-links a {
-    padding: 10px;
-    display: block;
-    color: var(--text);
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.nav-links a:hover {
-    color: var(--accent);
-}
-
-.nav-links.active {
-    display: flex;
+.navbar .nav-link:hover {
+    color: var(--accent) !important;
 }
 
 /* =========================
    📦 CONTAINER
 ========================= */
-main.container {
+.container {
     margin-top: 90px;
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-
-    padding: 20px;
-    background: var(--card);
-    border-radius: 15px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
 }
 
 /* =========================
    🧩 CARDS
 ========================= */
-.card, article, aside {
-    background: var(--card2);
-    padding: 20px;
-    border-radius: 10px;
+.card {
+    background: var(--card);
+    border-radius: 15px;
+    border: none;
     transition: 0.3s;
+    color: var(--text);
+}
+
+.light-mode .card {
+    background: var(--card2);
+    color: #132440;
 }
 
 .card:hover {
@@ -116,19 +87,16 @@ main.container {
 }
 
 /* =========================
-   🔘 BOTÕES
+   🔘 BOTÕES CUSTOM
 ========================= */
 .button {
-    display: block;
-    width: 100%;
-    padding: 12px;
+    display: inline-block;
+    padding: 10px 20px;
     background: var(--primary);
     color: white;
     border-radius: 25px;
-    text-align: center;
     text-decoration: none;
     transition: 0.3s;
-    cursor: pointer;
 }
 
 .button:hover {
@@ -137,7 +105,18 @@ main.container {
     transform: scale(1.05);
 }
 
-/* EDITAR */
+/* Bootstrap buttons */
+.btn {
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* =========================
+   ✏️ EDITAR / EXCLUIR
+========================= */
 .edit {
     background: var(--primary);
     color: white;
@@ -151,7 +130,7 @@ main.container {
     background: #2fc4c4;
 }
 
-/* EXCLUIR (ROSADO) */
+
 .delete {
     background: #e85d75;
     color: white;
@@ -181,6 +160,7 @@ main.container {
     border-radius: 50%;
     color: white;
     cursor: pointer;
+    transition: 0.3s;
 }
 
 .player-controls button:hover {
@@ -203,6 +183,7 @@ main.container {
     height: 100%;
     width: 0%;
     background: var(--accent);
+    border-radius: 10px;
 }
 
 /* =========================
@@ -222,21 +203,27 @@ main.container {
     margin-top: 5px;
     cursor: pointer;
     border-radius: 8px;
+    transition: 0.3s;
 }
 
 #playlist li:hover {
     background: rgba(255,255,255,0.1);
+    transform: translateX(5px);
 }
 
 #playlist li.active {
     border-left: 5px solid var(--accent);
+    background: rgba(255,255,255,0.15);
 }
 
 /* =========================
-   🎥 VÍDEO
+   🎥 VÍDEO 
 ========================= */
 .video-container {
     position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
     padding-bottom: 56.25%;
 }
 
@@ -253,59 +240,47 @@ main.container {
 .theme-toggle {
     position: fixed;
     right: 20px;
-    top: 10px;
+    top: 15px;
     z-index: 9999;
 
     background: var(--primary);
     color: white;
     border: none;
-    padding: 8px 12px;
-    border-radius: 20px;
+    padding: 10px 14px;
+    border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
 .theme-toggle:hover {
     background: var(--accent);
     color: black;
+    transform: scale(1.1);
 }
 
 /* =========================
    📊 TABELA ADMIN
 ========================= */
-.tabela {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.tabela th, .tabela td {
-    padding: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    text-align: left;
+.table {
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 /* =========================
-   📱 TABLET
+   📱 RESPONSIVO
 ========================= */
-@media (min-width: 601px) {
+@media (max-width: 600px) {
 
-    .nav-links {
-        display: flex !important;
-        flex-direction: row;
-        justify-content: center;
-        gap: 15px;
+    .theme-toggle {
+        top: 70px;
     }
 
-    .menu-toggle {
-        display: none;
+    h1 {
+        font-size: 22px;
     }
 
-    main.container {
-        width: 80%;
-    }
-
-    .button {
-        width: auto;
-        display: inline-block;
+    .card {
+        padding: 15px;
     }
 }
 
@@ -314,15 +289,8 @@ main.container {
 ========================= */
 @media (min-width: 1025px) {
 
-    main.container {
-        max-width: 900px;
-
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 20px;
+    .container {
+        max-width: 1000px;
     }
 
-    section {
-        grid-column: span 2;
-    }
 }
