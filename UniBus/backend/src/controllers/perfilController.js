@@ -81,8 +81,7 @@ ON estudante.usuario_id = usuario.id
 
 
 LEFT JOIN viagem
-
-ON viagem.estudante_id = estudante.id
+ON viagem.id = estudante.viagem_id
 
 
 
