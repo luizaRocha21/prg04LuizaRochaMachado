@@ -192,7 +192,7 @@ function carregarDados(){
 
 
 
-api.get("/perfil")
+api.get("/estudantes/perfil")
 
 .then(res=>{
 
