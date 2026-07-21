@@ -2,6 +2,7 @@ const db = require('../database/connection');
 
 
 
+
 exports.perfilEstudante = (req,res)=>{
 
 
@@ -13,7 +14,6 @@ console.log(
 "USUARIO AUTH:",
 req.usuario
 );
-
 
 
 
@@ -35,6 +35,7 @@ estudante.curso,
 
 estudante.telefone,
 
+
 usuario.email,
 
 
@@ -43,6 +44,7 @@ viagem.id AS viagem_id,
 
 viagem.data,
 
+viagem.status,
 
 
 
@@ -52,10 +54,10 @@ onibus.numero AS onibus,
 
 
 
-
 rota.id AS rota_id,
 
 rota.nome AS rota,
+
 
 rota.horario_saida AS saida,
 
@@ -63,11 +65,7 @@ rota.horario_retorno AS retorno,
 
 
 
-
-motorista.id AS motorista_id,
-
 motorista.nome AS motorista
-
 
 
 
@@ -82,27 +80,22 @@ ON estudante.usuario_id = usuario.id
 
 
 
-LEFT JOIN onibus
-
-ON estudante.onibus_id = onibus.id
-
-
-
-
-
 LEFT JOIN viagem
 
+ON viagem.estudante_id = estudante.id
+
+
+
+
+LEFT JOIN onibus
+
 ON viagem.onibus_id = onibus.id
-
-
 
 
 
 LEFT JOIN rota
 
 ON viagem.rota_id = rota.id
-
-
 
 
 
@@ -114,13 +107,11 @@ ON viagem.motorista_id = motorista.id
 
 
 
-WHERE estudante.usuario_id = ?
-
+WHERE usuario.id = ?
 
 
 
 ORDER BY viagem.id DESC
-
 
 
 
@@ -131,9 +122,7 @@ LIMIT 1
 `,
 
 
-
 [usuario_id],
-
 
 
 
@@ -150,8 +139,6 @@ return res.status(500).json(err);
 
 
 
-
-
 if(result.length===0){
 
 
@@ -159,7 +146,7 @@ return res.status(404).json({
 
 mensagem:
 
-"Perfil de estudante não encontrado"
+"Estudante não encontrado"
 
 });
 
@@ -168,10 +155,7 @@ mensagem:
 
 
 
-
-
 res.json(result[0]);
-
 
 
 }
@@ -179,7 +163,6 @@ res.json(result[0]);
 
 
 );
-
 
 
 };

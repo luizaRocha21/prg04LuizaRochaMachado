@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 
 function Header(){
@@ -6,126 +6,52 @@ function Header(){
 
 const navigate = useNavigate();
 
-const location = useLocation();
-
-
-
-const usuario = 
-JSON.parse(localStorage.getItem("usuario"));
-
-
-
-
-function sair(){
-
-
-localStorage.removeItem("usuario");
-
-
-navigate("/login");
-
-
-}
-
-
-
-
-
-const paginaInicial =
-location.pathname === "/";
-
-
-
-
 
 return(
 
 
-
-<header className="header-unibus">
-
+<header className="header">
 
 
+<h2 onClick={()=>navigate("/")}>
 
 
-<div
+🚌 UniBus
 
-className="logo-unibus"
-
-onClick={()=>navigate("/")}
-
->
-
-
-<span>
-
-🚍
-
-</span>
-
-
-<h2>
-
-UniBus
 
 </h2>
 
 
-</div>
 
-
-
-
-
-
-
-
-{
-
-usuario && !paginaInicial &&
-
-
-
-<div className="usuario-area">
-
-
-<span>
-
-Olá, {usuario.nome}
-
-</span>
-
+<nav>
 
 
 <button
 
-onClick={sair}
+className="btn-verde"
+
+onClick={()=>navigate("/login")}
 
 >
 
-Sair
+
+Entrar
+
 
 </button>
 
 
-
-</div>
-
-
-
-}
+</nav>
 
 
 
 </header>
 
 
-
 )
 
 
 }
-
 
 
 export default Header;

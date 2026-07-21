@@ -1,12 +1,17 @@
 import {
+
 useEffect,
+
 useState
+
 } from "react";
+
 
 
 import api from "../services/api";
 
 import socket from "../services/socket";
+
 
 
 import Header from "../components/Header";
@@ -27,34 +32,50 @@ import Botao from "../components/Botao";
 
 
 
+
+
 function Estudante(){
 
 
 
 const usuario =
-JSON.parse(localStorage.getItem("usuario"));
+
+JSON.parse(
+
+localStorage.getItem("usuario")
+
+);
+
+
 
 
 
 const [dados,setDados]=useState(null);
 
 
+
 const [motoristas,setMotoristas]=useState([]);
+
 
 
 const [motoristaSelecionado,setMotoristaSelecionado]=useState("");
 
 
+
 const [chamados,setChamados]=useState([]);
+
 
 
 const [chat,setChat]=useState(null);
 
 
+
 const [mensagem,setMensagem]=useState("");
 
 
+
 const [ida,setIda]=useState(false);
+
 
 
 const [volta,setVolta]=useState(false);
@@ -66,10 +87,13 @@ const [volta,setVolta]=useState(false);
 
 
 
+
 useEffect(()=>{
 
 
+
 carregarDados();
+
 
 
 
@@ -86,11 +110,7 @@ setMotoristas(res.data);
 .catch(err=>{
 
 
-console.log(
-"ERRO MOTORISTAS",
-err.response?.data
-
-);
+console.log(err);
 
 
 });
@@ -99,7 +119,10 @@ err.response?.data
 
 
 
+
+
 if(usuario){
+
 
 
 socket.emit(
@@ -109,6 +132,7 @@ socket.emit(
 usuario
 
 );
+
 
 
 
@@ -128,6 +152,7 @@ alert(
 
 }
 
+
 );
 
 
@@ -136,10 +161,17 @@ alert(
 
 
 
+
+
+
 return()=>{
 
 
-socket.off("nova_mensagem");
+socket.off(
+
+"nova_mensagem"
+
+);
 
 
 };
@@ -160,14 +192,14 @@ function carregarDados(){
 
 
 
-api.get("/estudantes/perfil")
+api.get("/perfil")
 
 .then(res=>{
 
 
 console.log(
 
-"DADOS PERFIL:",
+"DADOS ESTUDANTE",
 
 res.data
 
@@ -182,6 +214,7 @@ setDados(res.data);
 })
 
 
+
 .catch(err=>{
 
 
@@ -189,23 +222,14 @@ console.log(
 
 "ERRO PERFIL",
 
-err.response?.data
-
-);
-
-
-
-alert(
-
-err.response?.data?.mensagem ||
-
-"Erro ao carregar perfil"
+err.response
 
 );
 
 
 
 });
+
 
 
 }
@@ -234,9 +258,11 @@ estudante_id:
 dados.estudante_id,
 
 
+
 viagem_id:
 
 dados.viagem_id,
+
 
 
 embarcou:1
@@ -254,7 +280,6 @@ setIda(true);
 
 
 });
-
 
 
 }
@@ -283,9 +308,11 @@ estudante_id:
 dados.estudante_id,
 
 
+
 viagem_id:
 
 dados.viagem_id,
+
 
 
 embarcou:1
@@ -296,6 +323,7 @@ embarcou:1
 )
 
 
+
 .then(()=>{
 
 
@@ -303,6 +331,7 @@ setVolta(true);
 
 
 });
+
 
 
 }
@@ -347,6 +376,7 @@ dados.estudante_id,
 
 
 mensagem
+
 
 
 };
@@ -402,6 +432,7 @@ motoristaSelecionado;
 
 
 
+
 api.post(
 
 "/chamados",
@@ -409,6 +440,7 @@ api.post(
 corpo
 
 )
+
 
 
 .then(()=>{
@@ -425,22 +457,10 @@ alert(
 );
 
 
-})
-
-.catch(err=>{
-
-
-console.log(err);
-
-
-alert(
-
-"Erro ao enviar mensagem"
-
-);
-
 
 });
+
+
 
 
 
@@ -466,6 +486,7 @@ return;
 
 
 
+
 api.post(
 
 "/chamados/mensagem",
@@ -478,25 +499,25 @@ chamado_id:
 chat.id,
 
 
+
 remetente:
 
 "estudante",
 
 
+
 mensagem
+
 
 
 }
 
-)
+);
 
-.then(()=>{
+
 
 
 setMensagem("");
-
-
-});
 
 
 
@@ -511,6 +532,7 @@ setMensagem("");
 
 
 if(!dados){
+
 
 
 return(
@@ -547,6 +569,7 @@ Carregando estudante...
 )
 
 
+
 }
 
 
@@ -560,7 +583,6 @@ Carregando estudante...
 return(
 
 
-
 <div className="page">
 
 
@@ -570,9 +592,7 @@ return(
 
 
 
-
 <div className="container">
-
 
 
 
@@ -612,6 +632,7 @@ Olá {dados.nome} 👋
 
 
 
+
 </CardPerfil>
 
 
@@ -624,11 +645,13 @@ Olá {dados.nome} 👋
 
 {
 
+
 dados.viagem_id ?
 
 
 
 <>
+
 
 
 <CardViagem
@@ -642,13 +665,18 @@ dados={dados}
 
 <ControleEmbarque
 
+
 ida={ida}
+
 
 volta={volta}
 
+
 confirmarIda={confirmarIda}
 
+
 confirmarVolta={confirmarVolta}
+
 
 />
 
@@ -659,6 +687,7 @@ confirmarVolta={confirmarVolta}
 
 
 :
+
 
 
 
@@ -675,7 +704,7 @@ confirmarVolta={confirmarVolta}
 
 <p>
 
-Aguarde novas viagens disponíveis.
+Aguarde uma viagem disponível.
 
 </p>
 
@@ -698,11 +727,14 @@ Aguarde novas viagens disponíveis.
 <div className="card">
 
 
+
 <h2>
 
 💬 Falar com motorista
 
 </h2>
+
+
 
 
 
@@ -720,7 +752,9 @@ Aguarde novas viagens disponíveis.
 value={motoristaSelecionado}
 
 
+
 onChange={e=>
+
 
 setMotoristaSelecionado(
 
@@ -728,20 +762,22 @@ e.target.value
 
 )
 
+
 }
+
 
 
 >
 
 
-
 <option value="">
 
 
-Escolha motorista
+Escolha o motorista
 
 
 </option>
+
 
 
 
@@ -768,10 +804,12 @@ value={m.id}
 </option>
 
 
+
 ))
 
 
 }
+
 
 
 
@@ -793,14 +831,24 @@ value={m.id}
 placeholder="Digite sua mensagem"
 
 
+
 value={mensagem}
+
 
 
 onChange={e=>
 
-setMensagem(e.target.value)
+
+setMensagem(
+
+e.target.value
+
+)
+
+
 
 }
+
 
 
 />
@@ -820,6 +868,7 @@ acao={enviarChamado}
 
 
 />
+
 
 
 
@@ -852,7 +901,6 @@ abrirChat={setChat}
 
 
 
-
 <Chat
 
 
@@ -876,11 +924,13 @@ enviarMensagem={enviarMensagem}
 
 
 
-</div>
 
 
 </div>
 
+
+
+</div>
 
 
 )

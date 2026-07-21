@@ -7,7 +7,7 @@ const db = require('../database/connection');
 
 
 const auth =
-require('../middlewares/authmiddleware');
+require('../middlewares/authMiddleware');
 
 
 

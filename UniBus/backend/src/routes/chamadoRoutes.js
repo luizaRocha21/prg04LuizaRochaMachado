@@ -8,7 +8,7 @@ require('../controllers/chamadoController');
 
 
 const auth =
-require('../middlewares/authmiddleware');
+require('../middlewares/authMiddleware');
 
 
 
