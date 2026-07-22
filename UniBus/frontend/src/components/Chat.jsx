@@ -1,78 +1,27 @@
 import Botao from "./Botao";
 
+function Chat({ chat, mensagem, setMensagem, enviarMensagem }) {
+    if (!chat) return null;
 
-function Chat({
+    return (
+        <div className="card">
+            <h2 className="titulo-card">💬 Chat</h2>
 
-chat,
+            <p>{chat.mensagem}</p>
 
-mensagem,
+            <input
+                placeholder="Responder"
+                value={mensagem}
+                onChange={e => setMensagem(e.target.value)}
+            />
 
-setMensagem,
-
-enviarMensagem
-
-
-}){
-
-
-if(!chat)
-return null;
-
-
-
-return(
-
-
-<div className="card">
-
-
-<h2>
-💬 Chat
-</h2>
-
-
-
-<p>
-{chat.mensagem}
-</p>
-
-
-
-<input
-
-placeholder="Responder"
-
-value={mensagem}
-
-onChange={e=>
-
-setMensagem(e.target.value)
-
+            <Botao
+                texto="Enviar"
+                acao={enviarMensagem}
+                tipo="verde"
+            />
+        </div>
+    );
 }
-
-/>
-
-
-
-
-<Botao
-
-texto="Enviar"
-
-acao={enviarMensagem}
-
-/>
-
-
-
-</div>
-
-
-)
-
-
-}
-
-
 
 export default Chat;

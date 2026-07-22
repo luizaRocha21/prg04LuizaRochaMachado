@@ -1,46 +1,58 @@
+/* =========================================================
+   UniBus — Design tokens
+   Conceito: sinalização de transporte escolar, com um
+   toque de landing page moderna (gradientes, pílulas,
+   formas decorativas). Fundo amarelo pastel, preto/branco
+   nos detalhes principais, vermelho/verde/amarelo vivo
+   como sistema de acento (semáforo).
+========================================================= */
+
 :root{
 
+  /* Neutros */
+  --preto:        #1C1A16;
+  --preto-suave:  #34302A;
+  --branco:       #FFFFFF;
 
---preto:#1F1F1F;
+  /* Fundo — amarelo pastel*/
+  --amarelo-pastel:        #fff9a9;
+  --creme-2:               #FFEFC6;
+  --linha:                 #F0E3B8;
+  --cinza:                 #746C60;
 
---branco:#FFFFFF;
+  /* Marca — amarelo-ônibus escolar */
+  --amarelo:        #FFC633;
+  --amarelo-escuro: #F2A200;
+  --amarelo-vivo:   #FFB300;
 
+  /* Semáforo — sistema de estado, tons vivos */
+  --verde:      #16A34A;
+  --verde-escuro: #0F7A38;
+  --verde-bg:   #E1F6E8;
 
---bege:#E4E4C9;
+  --ambar:      #FF7A1A;
+  --ambar-escuro: #E05F00;
+  --ambar-bg:   #FFE9D6;
 
+  --vermelho:   #E63946;
+  --vermelho-escuro: #C4212F;
+  --vermelho-bg:#FBE2E2;
 
---amarelo:#FFFD99;
+  /* Gradientes */
+  --grad-hero:     linear-gradient(160deg, #FFE9A8 0%, #FFF6E2 55%, #FFFFFF 100%);
+  --grad-header:   linear-gradient(120deg, #262119 0%, #1C1A16 60%);
+  --grad-amarelo:  linear-gradient(135deg, #FFD666 0%, var(--amarelo-vivo) 100%);
+  --grad-verde:    linear-gradient(135deg, #34D171 0%, var(--verde) 100%);
+  --grad-vermelho: linear-gradient(135deg, #FF6B6B 0%, var(--vermelho) 100%);
 
+  /* Sombra e forma */
+  --sombra:        0 12px 30px rgba(28,26,22,0.08);
+  --sombra-forte:  0 20px 45px rgba(28,26,22,0.16);
+  --raio:          14px;
+  --raio-grande:   28px;
+  --raio-pilula:   999px;
 
-
---verde:#4CAF50;
-
-
---mostarda:#D4A017;
-
-
---vermelho:#D9534F;
-
-
-
---cinza:#6B6B6B;
-
-
-
---sombra:
-0 20px 50px rgba(0,0,0,0.08);
-
-
-
---sombra-forte:
-0 30px 70px rgba(0,0,0,0.12);
-
-
-
---raio:
-
-28px;
-
-
-
+  /* Tipografia */
+  --fonte-titulo: 'Archivo', 'Inter', sans-serif;
+  --fonte-corpo:  'Inter', sans-serif;
 }
